@@ -24,6 +24,8 @@ my %WriteMakefileArgs = (
   "MIN_PERL_VERSION" => "5.010001",
   "NAME" => "App::ShellCompleter::CpanUpload",
   "PREREQ_PM" => {
+    "Complete::Util" => 0,
+    "Filename::Archive" => 0,
     "Getopt::Long::Complete" => 0
   },
   "TEST_REQUIRES" => {
@@ -32,7 +34,7 @@ my %WriteMakefileArgs = (
     "IPC::Open3" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.02",
+  "VERSION" => "0.03",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -40,8 +42,10 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "Complete::Util" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
+  "Filename::Archive" => 0,
   "Getopt::Long::Complete" => 0,
   "IO::Handle" => 0,
   "IPC::Open3" => 0,

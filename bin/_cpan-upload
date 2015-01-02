@@ -1,7 +1,7 @@
 #!perl
 
 our $DATE = '2015-01-02'; # DATE
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 # FRAGMENT id=shcompgen-hint completer=1 for=cpan-upload
 
@@ -10,6 +10,8 @@ use strict;
 use warnings;
 #use Log::Any '$log';
 
+use Complete::Util qw(complete_file);
+use Filename::Archive qw(check_archive_filename);
 use Getopt::Long::Complete qw(GetOptionsWithCompletion);
 
 die "This script is for shell completion only\n"
@@ -47,7 +49,20 @@ my $opt_spec =
 GetOptionsWithCompletion(
     sub {
         my %args = @_;
-        return undef;
+        my $type = $args{type};
+        my $word = $args{word};
+
+        if ($type eq 'arg') {
+            return {
+                words => complete_file(
+                    word => $word,
+                    filter => sub {
+                        -d($_[0]) || check_archive_filename(filename => $_);
+                    },
+                ),
+                path_sep => '/',
+            };
+        }
     },
     %$opt_spec,
 );
@@ -67,7 +82,7 @@ _cpan-upload - Shell completer for cpan-upload
 
 =head1 VERSION
 
-This document describes version 0.02 of _cpan-upload (from Perl distribution App-ShellCompleter-CpanUpload), released on 2015-01-02.
+This document describes version 0.03 of _cpan-upload (from Perl distribution App-ShellCompleter-CpanUpload), released on 2015-01-02.
 
 =head1 SYNOPSIS
 
