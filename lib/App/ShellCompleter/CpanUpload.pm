@@ -1,7 +1,7 @@
 package App::ShellCompleter::CpanUpload;
 
 our $DATE = '2015-01-02'; # DATE
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 1;
 # ABSTRACT: Shell completion for cpan-upload
@@ -18,7 +18,7 @@ App::ShellCompleter::CpanUpload - Shell completion for cpan-upload
 
 =head1 VERSION
 
-This document describes version 0.01 of App::ShellCompleter::CpanUpload (from Perl distribution App-ShellCompleter-CpanUpload), released on 2015-01-02.
+This document describes version 0.02 of App::ShellCompleter::CpanUpload (from Perl distribution App-ShellCompleter-CpanUpload), released on 2015-01-02.
 
 =head1 SYNOPSIS
 
